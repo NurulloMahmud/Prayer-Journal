@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from debts.models import Debts
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 
@@ -42,3 +43,13 @@ class CalculateDebt(LoginRequiredMixin, View):
             messages.warning(request, "Please enter both dates")
 
             return redirect("debts:calculate")
+
+
+class DebtsList(View):
+    def get(self, request):
+        debts = get_object_or_404(Debts, user=request.user)
+
+        return render(request, 'debts/list.html', {"debts": debts})
+    
+    def post(self, request):
+        pass

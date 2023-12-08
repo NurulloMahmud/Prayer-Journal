@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Debts list
+{% endblock %}
+
+{% block content %}
+<style>
+    .debts-listitems {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 16px;
+    }
+</style>
+    <br>
+    <h2>Debts</h2>
+    <br>
+
+        <div class="debts-list">
+
+            <ul>
+                <li><b>Bomdod: </b>{{ debts.bomdod }}</li>
+                <li><b>Peshin: </b>{{ debts.peshin }}</li>
+                <li><b>Asr: </b>{{ debts.asr }}</li>
+                <li><b>Shom: </b>{{ debts.shom }}</li>
+                <li><b>Xufton: </b>{{ debts.xufton }}</li>
+            </ul>
+
+        </div>
+{% endblock %}
