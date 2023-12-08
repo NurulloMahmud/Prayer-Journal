@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Calculate debt
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Calculate your debt</h2>
+    <br>
+
+    {% if messages %}
+        {% for message in messages %}
+            <ul>
+                <span class="alert alert-{{ message.tags }}">{{ message }}</span>
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    <center>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="beginning"><b>From</b></label>
+            <input type="date" name="beginning">
+
+            <label for="ending"><b>To</b></label>
+            <input type="date" name="ending"><br><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </center>
+{% endblock %}
