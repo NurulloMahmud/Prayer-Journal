@@ -13,14 +13,14 @@
     <div class="container">
         {% block content %}
 
-        {% if messages %}
-            {% for message in messages %}
-                <span class="{{ message.tags }}">{{ message }}</span>
-            {% endfor %}
-        {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <span class="alert alert-{{ message.tags }}">{{ message }}</span>
+                {% endfor %}
+            {% endif %}
 
             <h1>Home page</h1>
-        
+            
         {% endblock %}
     </div>
 

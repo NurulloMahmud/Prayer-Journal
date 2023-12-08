@@ -16,11 +16,11 @@ class RegisterView(View):
         password_confirm = request.POST.get('password_confirm')
 
         if User.objects.filter(username=username).exists():
-            messages.error(request, "This username already exists!")
+            messages.warning(request, "This username already exists!")
             return redirect("users:register")
 
         if password != password_confirm:
-            messages.error(request, "Passwords don't match")
+            messages.warning(request, "Passwords don't match")
             return redirect("users:register")
 
         User.objects.create_user(
@@ -41,10 +41,10 @@ class LoginView(View):
 
         if form.is_valid():
             user = form.get_user()
-            login(request, login)
+            login(request, user)
             messages.success(request, "Successfully logged in")
 
             return redirect("home")
         
-        messages.error(request, "incorrect username or/and password")
+        messages.warning(request, "incorrect username or/and password")
         return redirect("users:login")

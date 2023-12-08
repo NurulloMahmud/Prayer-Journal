@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+<br>
+<h2>Register page</h2><br>
+    {% if messages %}
+        {% for message in messages %}
+            <ul>
+                <span class="alert alert-{{message.tags}}">{{ message }}</span>
+            </ul>
+        {% endfor %}
+    {% endif %}
+    <center>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="first_name" class="form-control" placeholder="First name" aria-label="First name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="last_name" class="form-control" placeholder="Last name" aria-label="Last name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" name="password_confirm" class="form-control" placeholder="Confirm password" aria-label="Confirm password" aria-describedby="basic-addon1" required>
+            </div>
+
+            <p>Already have an account ? <a href="{% url 'users:login' %}">login</a></p>
+
+            <button type="submit" class="btn btn-primary">Register</button>
+
+        </form>
+    </center>
+{% endblock %}
